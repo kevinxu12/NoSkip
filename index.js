@@ -12,7 +12,6 @@ const app = express();
 //make the app use cookies
 app.use(
     cookieSession({
-        //cookie lasts 30 days
         maxAge: 30 * 24 * 60 * 60 * 1000,
         keys: [keys.cookieKey]
     })
