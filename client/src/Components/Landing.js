@@ -6,7 +6,7 @@ const Landing = () => {
             <h1>
                 NeverSkip!
             </h1>
-            Collect feedback from users!
+            Never Skip a Class Again!
         </div>
     );
 }
