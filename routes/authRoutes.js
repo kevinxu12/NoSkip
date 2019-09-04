@@ -1,6 +1,6 @@
 
 const passport = require('passport');
-
+const base64url = require('base64url');
 module.exports = app => {
 app.get(
     '/auth/google', 
@@ -12,11 +12,27 @@ app.get(
     )
 );
 
+app.get(
+    '/auth/google/grader', 
+    passport.authenticate(
+        'google', 
+        {
+            scope: ['profile', 'email'],
+            state: base64url(JSON.stringify({blah: 'test'}))
+        }
+    )
+);
+
 app.get('/auth/google/callback', 
 passport.authenticate('google'),
 (req, res) => {
-    res.redirect('/surveys');
+    if(req.user.graderID) {
+        res.redirect('/graders');
+    } else {
+        res.redirect('/surveys');
+    }
 });
+
 
 app.get('/api/logout', (req, res) => {
     req.logout();

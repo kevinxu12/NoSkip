@@ -7,7 +7,7 @@ import * as actions from '../actions';
 
 const Dashboard =  () => <h2> Dashboard</h2>;
 const SurveyNew = () => <h2> SurveyNew</h2>;
-
+const GraderDashboard = () => <h2> Grader </h2>;
 
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
                         <Route exact path = "/" component = {Landing}/>
                         <Route exact path = "/surveys" component = {Dashboard} />
                         <Route path = "/surveys/new" component = {SurveyNew} />
+                        <Route path = "/graders" component = {GraderDashboard} />
                     </div>
                 </BrowserRouter>
             </div>

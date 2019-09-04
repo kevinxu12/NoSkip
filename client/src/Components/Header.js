@@ -9,15 +9,23 @@ class Header extends Component {
             case null:
                 return;
             case false:
-                return (
-                    <li><a href = '/auth/google'>Login With Google</a></li>
+                return ([
+                    <li><a href = '/auth/google'>Login With Google</a></li>,
+                    <li><a href = '/auth/google/grader'>Login as Grader </a> </li>
+                ]
                 )
             default: 
-                return [
-                <li key = "0" style = {{margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
-                <li key = "1" ><Payments/></li>,
-                <li key = "2"><a href = '/api/logout'> Logout </a> </li>
-                ]
+                if(this.props.auth.graderID) {
+                    return ([
+                        <li key = "2"><a href = '/api/logout'> Logout </a> </li>
+                    ])
+                } else {
+                    return ([
+                    <li key = "0" style = {{margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
+                    <li key = "1" ><Payments/></li>,
+                    <li key = "2"><a href = '/api/logout'> Logout </a> </li>
+                    ]);
+                }
 
         }
     }
