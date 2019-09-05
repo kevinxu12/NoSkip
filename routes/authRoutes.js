@@ -26,11 +26,12 @@ app.get(
 app.get('/auth/google/callback', 
 passport.authenticate('google'),
 (req, res) => {
-    if(req.user.graderID) {
-        res.redirect('/graders');
-    } else {
-        res.redirect('/surveys');
-    }
+    // if(req.user.graderID) {
+    //     res.redirect('/graders');
+    // } else {
+    //     res.redirect('/surveys');
+    // }
+    res.redirect('/surveys');
 });
 
 
