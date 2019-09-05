@@ -34,7 +34,7 @@ passport.use(
     if(!isGrader) {
       existingUser = await User.findOne({googleId : profile.id})
       if(existingUser) {
-        done(null, existingUser);
+        return done(null, existingUser);
       }  else {
         const user = await new User({ googleId: profile.id}).save()
         done(null, user);
@@ -44,7 +44,7 @@ passport.use(
     } else {
       existingUser = await Grader.findOne({googleId : profile.id})
       if(existingUser) {
-        done(null, existingUser);
+        return done(null, existingUser);
       } else {
         const user = await new Grader({googleId: profile.id, graderID: 'true'}).save();
         done(null, user);
