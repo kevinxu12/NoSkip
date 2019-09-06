@@ -29,7 +29,6 @@ passport.use(
     passReqToCallback: true
 }, async (req, accessToken, refreshToken, profile, done) => {
     const isGrader = await req.query.state;
-    console.log(isGrader);
     let existingUser = null;
     if(!isGrader) {
       existingUser = await User.findOne({googleId : profile.id})
@@ -45,7 +44,6 @@ passport.use(
       }
       const user = await new Grader({googleId: profile.id, graderID: 'true'}).save();
       done(null, user);
-      }
     }
-   
-}));
+    })
+);
