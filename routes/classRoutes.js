@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 const requireCredits = require('../middlewares/requireCredits');
 const requireLogin = require('../middlewares/requireLogin');
-
-
 const Class = mongoose.model('classes');
+
+
 module.exports = app => {
-    app.post('/classes/new', requireLogin, requireCredits, async (req, res) => {
+    app.post('/api/classes', requireLogin, requireCredits, async (req, res) => {
         const { department, number, timeStart, timeEnd, meetingDays} = req.body;
         const existingClass = await Class.findOne({department: department, number: number});
         const studentsArray  = [req.user.email];
+        console.log(studentsArray);
         if(!existingClass) {
             new Class({
                 department,
@@ -16,12 +17,16 @@ module.exports = app => {
                 timeStart,
                 timeEnd,
                 meetingDays,
-                studentsArray
+                students: studentsArray,
             }).save();
         } else {
-            existingClass.students = existingClass.students.concat([req.user.email]);
+            const isAlreadyIn = existingClass.students.includes(req.user.email);
+            if(!isAlreadyIn) {
+                existingClass.students = existingClass.students.concat(studentsArray);
+                existingClass.save();
+            }
         }
-        res.user.credits -= 1;
+        req.user.creds -= 1;
         const user = await req.user.save();
         res.send(user);   
     });

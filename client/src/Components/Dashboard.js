@@ -1,14 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'; 
-
 const Dashboard = () => {
     return (
         <div >
-            <Link to="/classes/new">
-                <button className = "teal btn">
-                    Add Classes
-                </button>
-            </Link>
+            <div className = "card darken-1">
+                <div className="card-content">
+                    <span className="card-title">
+                        Add a Course</span>
+                    <p>Click here to subscribe for courses</p>
+                    </div>
+                <div className="card-action">
+                    <a href="/classes/new">Add New Classes</a>
+                </div>
+            </div>
+           
         </div> 
     )
 }

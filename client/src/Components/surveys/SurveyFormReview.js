@@ -22,7 +22,7 @@ class SurveyFormReview extends Component {
                 <button type = "submit" className = "yellow darken-3 btn-flat white-text" onClick = {this.props.onCancel}> 
                     Back
                 </button> 
-                <button to="/graders" className = "teal btn-flat right white-text" onClick = {() => this.props.submitSurvey(this.props.formValues, this.props.history)}> 
+                <button className = "teal btn-flat right white-text" onClick = {() => this.props.submitSurvey(this.props.formValues, this.props.history)}> 
                     Submit 
                     <i className="material-icons right"> email </i>
                 </button>
