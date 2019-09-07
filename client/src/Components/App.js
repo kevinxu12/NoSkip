@@ -6,7 +6,8 @@ import Dashboard from './Dashboard';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import SurveyNew from './surveys/SurveyNew';
-const GraderDashboard = () => <h2> Grader </h2>;
+import GraderDashboard from './GraderDashboard';
+import AddClasses from './classes/AddClasses';
 
 
 class App extends Component {
@@ -16,14 +17,15 @@ class App extends Component {
      
     render() {
         return (
-            <div className = "container"> 
+            <div> 
                 <BrowserRouter>
-                    <div>
+                    <div className = "container">
                         <Header />
                         <Route exact path = "/" component = {Landing}/>
                         <Route exact path = "/surveys" component = {Dashboard} />
                         <Route path = "/surveys/new" component = {SurveyNew} />
                         <Route path = "/graders" component = {GraderDashboard} />
+                        <Route path = "/classes/new" component = {AddClasses} />
                     </div>
                 </BrowserRouter>
             </div>

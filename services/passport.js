@@ -30,19 +30,20 @@ passport.use(
 }, async (req, accessToken, refreshToken, profile, done) => {
     const isGrader = await req.query.state;
     let existingUser = null;
+    const email = profile.emails[0].value;
     if(!isGrader) {
-      existingUser = await User.findOne({googleId : profile.id})
+      existingUser = await User.findOne({googleId : profile.id});
       if(existingUser) {
         return done(null, existingUser);
       }
-      const user = await new User({ googleId: profile.id}).save();
+      const user = await new User({ googleId: profile.id, email: email}).save();
       done(null, user);
     } else {
       existingUser = await Grader.findOne({googleId : profile.id})
       if(existingUser) {
         return done(null, existingUser);
       }
-      const user = await new Grader({googleId: profile.id, graderID: 'true'}).save();
+      const user = await new Grader({googleId: profile.id, graderID: 'true', email: email}).save();
       done(null, user);
     }
     })

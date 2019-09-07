@@ -10,8 +10,8 @@ class Header extends Component {
                 return;
             case false:
                 return ([
-                    <li><a href = '/auth/google'>Login With Google</a></li>,
-                    <li><a href = '/auth/google/grader'>Login as Grader </a> </li>
+                    <li><a href = '/auth/google'>Login As User</a></li>,
+                    <li><a href = '/auth/google/grader'>Login As Grader </a> </li>
                 ]
                 )
             default: 
@@ -36,7 +36,7 @@ class Header extends Component {
                     <Link 
                     to = {this.props.auth ? '/surveys' : '/'}
                     className = "left brand-logo">
-                        NeverSkip 
+                       NoSkip 
                     </Link>
                     <ul className = "right"> 
                         {this.renderContent()}

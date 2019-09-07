@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 require('./models/User');
 require('./models/Survey');
 require('./models/Grader');
+require('./models/Class');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -28,6 +29,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
+require('./routes/classRoutes')(app);
 if(process.env.NODE_ENV == 'production') {
     app.use(express.static('client/build'));
     const path = require('path');

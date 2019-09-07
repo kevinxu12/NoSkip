@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
 
 class SurveyField extends Component {
     
     render() {
-        const { input, label }  = this.props;
+        const { input, label, meta }  = this.props;
+        const { error, touched } = meta;
         return ( 
             <div> 
                 <label>{label} </label>
-                <input {...input}/>
+                <input {...input} style = {{marginBottom: '20px'}}/>
+                <div className = "red-text" style = {{ marginBottom : '20px'}}>
+                    {touched && error}
+                </div>
             </div>
         )
     }
