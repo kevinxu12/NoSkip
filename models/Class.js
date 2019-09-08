@@ -6,7 +6,7 @@ const classSchema = new Schema({
     number: Number,
     timeStart: String,
     timeEnd: String,
-    meetingDays: String,
+    meetingDays: [String],
     students: [String]
 });
 

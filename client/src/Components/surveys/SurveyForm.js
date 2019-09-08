@@ -11,6 +11,7 @@ const FIELDS = formFields;
 class SurveyForm extends Component {
     renderFields() {
         return _.map(FIELDS, ({label, name}) => {
+            //for production
             return <Field key = {name} label = {label} name = {name} type = "text" component = {SurveyField}/>
         })
     }

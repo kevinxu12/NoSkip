@@ -14,6 +14,6 @@ class SurveyField extends Component {
                 </div>
             </div>
         )
+        }
     }
-}
 export default SurveyField;

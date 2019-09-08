@@ -6,10 +6,10 @@ const Class = mongoose.model('classes');
 
 module.exports = app => {
     app.post('/api/classes', requireLogin, requireCredits, async (req, res) => {
+        console.log(req.body);
         const { department, number, timeStart, timeEnd, meetingDays} = req.body;
         const existingClass = await Class.findOne({department: department, number: number});
         const studentsArray  = [req.user.email];
-        console.log(studentsArray);
         if(!existingClass) {
             new Class({
                 department,
@@ -26,7 +26,7 @@ module.exports = app => {
                 existingClass.save();
             }
         }
-        req.user.creds -= 1;
+        req.user.credits -= 1;
         const user = await req.user.save();
         res.send(user);   
     });

@@ -20,7 +20,7 @@ class Landing extends Component {
                         <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
                         <h5 class="center">Empirically-Proven Game Theory Strategy</h5>
 
-                        <p class="light">NoSkip utilizes the idea of a commitment strategy, empirically proven to be the most effective incentive mechanism. Users deposit money into the app and only get the money back when they answer NoSkip's verification questions correctly</p>
+                        <p class="light">NoSkip utilizes the idea of a commitment strategy, empirically proven to be the most effective incentive mechanism. The univeristy deposits money into the app and if students attend class, they can pocket that money</p>
                     </div>
                     </div>
 

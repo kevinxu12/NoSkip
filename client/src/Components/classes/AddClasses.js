@@ -17,7 +17,7 @@ class AddClasses extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={() => {this.props.submitClasses(this.state)}}>
+                
                     <DropDown name = "Pick Your Class" options = {classOptions} onClick={(dep) => {
                         this.setState({department: dep.value})
                         }}
@@ -32,10 +32,13 @@ class AddClasses extends Component {
                         })
                         })}
                         isMulti = {false}/>
-                    <Link to = "/surveys" className = "teal btn-flat left white-text">
+                    <Link to = "/surveys" className = "teal btn-flat orange left white-text">
+                        Cancel
+                    </Link>
+                    <Link to="/surveys" onClick = {() => {this.props.submitClasses(this.state)}} className = "teal btn-flat right white-text">
                         Submit
                     </Link>
-                </form>
+    
             </div> 
         )
 

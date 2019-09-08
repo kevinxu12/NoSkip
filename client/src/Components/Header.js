@@ -10,8 +10,8 @@ class Header extends Component {
                 return;
             case false:
                 return ([
-                    <li><a href = '/auth/google'>Login As User</a></li>,
-                    <li><a href = '/auth/google/grader'>Login As Grader </a> </li>
+                    <li><a href = '/auth/google'>Login As Student</a></li>,
+                    <li><a href = '/auth/google/grader'>Login As Teacher </a> </li>
                 ]
                 )
             default: 
@@ -21,7 +21,7 @@ class Header extends Component {
                     ])
                 } else {
                     return ([
-                    <li key = "0" style = {{margin: '0 10px'}}>Potential Money Lost: {this.props.auth.credits}</li>,
+                    <li key = "0" style = {{margin: '0 10px'}}>Balance: {this.props.auth.credits}</li>,
                     <li key = "1" ><Payments/></li>,
                     <li key = "2"><a href = '/api/logout'> Logout </a> </li>
                     ]);

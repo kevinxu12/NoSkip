@@ -27,5 +27,5 @@ export const fetchSurveys = () => async dispatch => {
 export const submitClasses = (classInformation) => async dispatch => {
     console.log("submitting class information", classInformation);
     const res = await axios.post('/api/classes', classInformation);
-    dispatch( { type: POST_CLASSES, payload: res.data});
+    dispatch( { type: FETCH_USER, payload: res.data});
 }

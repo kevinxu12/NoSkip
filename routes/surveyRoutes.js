@@ -8,6 +8,8 @@ const { Path }= require('path-parser');
 const { URL } = require('url');
 
 const Survey = mongoose.model('surveys');
+const User = mongoose.model('users');
+
 module.exports = app => {
     app.get('/api/surveys', async (req, res) => {
         const surveys = await Survey.find({_user: req.user}).select({recipients: false});
@@ -50,21 +52,25 @@ module.exports = app => {
                   lastResponded: new Date()
                 }
             ).exec();
-            // const match = p.test(new URL(url).pathname);
-            // const survey = await Survey.findOne({
-            //     _id: surveyId
-            // });
-            // const existingUser = User.findOne({email: email});
-            // if(existingUser) {
-            //     if(match && match.choice !== survey.answer) {
-            //         existingUser.unverifiedAttendance += 1;
-            //     } else {
-            //         existingUser.verifiedAttendance += 1;
-            //     }
-            //     existingUser.save();
-            // }
         })
         .value();
+        _.map(req.body, async ({email, url}) => {
+            const match = p.test(new URL(url).pathname);
+            if(match) {
+                const survey = await Survey.findOne({
+                    _id: match.surveyId
+                });
+                let existingUser = await User.findOne({email: email});
+                if(existingUser) {
+                    if(match.choice !== survey.answer) {
+                        existingUser.unverifiedAttendance += 1;
+                    } else {
+                        existingUser.verifiedAttendance += 1;
+                    }
+                    existingUser.save();
+                }
+        }
+        });
         res.send({});
         // might need some logic about correctness
     })
