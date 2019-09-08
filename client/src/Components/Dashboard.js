@@ -26,10 +26,10 @@ class Dashboard extends Component {
                             User Dashboard
                         </span>
                         <p>See How You're Doing!</p>
-                        <p>Classes Skipped: {(user && user.verifiedAttendance) ? user.verifiedAttendance : 0}</p>
+                        <p>Classes Skipped: {(user && user.unverifiedAttendance) ? user.unverifiedAttendance : 0}</p>
                         <p>Most Skipped Class: CIS 121 (3 Skips)</p>
                         <p>Biggest Progress: MKTG 101 </p>
-                        <p>Classes Attended: {(user && user.unverifiedAttendance) ? user.unverifiedAttendance : 0} </p>
+                        <p>Classes Attended: {(user && user.verifiedAttendance) ? user.verifiedAttendance : 0} </p>
                     </div>
                     <div className="card-content white" style = {{borderStyle: "solid", borderColor: "blue-grey"}}>
                         <ChartLayout/>

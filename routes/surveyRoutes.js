@@ -62,7 +62,8 @@ module.exports = app => {
                 });
                 let existingUser = await User.findOne({email: email});
                 if(existingUser) {
-                    if(match.choice !== survey.answer) {
+                    if(match.choice.toLowerCase() !== survey.answer.toLowerCase()) {
+                        console.log("adding");
                         existingUser.unverifiedAttendance += 1;
                     } else {
                         existingUser.verifiedAttendance += 1;
